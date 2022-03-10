@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import logo from '../../img/orangebull.png';
+import logo from '../../img/ancientcoin.png';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getTransDetail } from '../../actions/transaction';

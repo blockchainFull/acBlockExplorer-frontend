@@ -5,7 +5,7 @@ import Block from './Block';
 import Transaction from './Transaction';
 import { getLatestBlocks } from '../../actions/block';
 import { getLatestTransactions } from '../../actions/transaction';
-import logo from '../../img/orangebull.png';
+import logo from '../../img/ancientcoin.png';
 import '../../style.css';
 
 const Dashboard = ({  
