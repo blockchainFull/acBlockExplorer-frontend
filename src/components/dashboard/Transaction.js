@@ -4,16 +4,23 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Transaction = ({ transaction }) => {
-const transactions = transaction.map((tra) => (
 
-    <tr className="naji-TableBodyRow_row" key={tra.txid}>
-        <td className="naji-width-200"><Link to={`/transdetail/${tra.hash}`} className="naji_link"><span>{tra.hash.slice(0,5)}...{tra.hash.slice(tra.hash.length-5, tra.hash.length)}</span></Link></td>
-        <td className="naji-width-150"><span>{tra.from.slice(0,5)}...{tra.from.slice(tra.from.length-5, tra.from.length)}</span></td>
-        <td className="naji-width-150"><span>{tra.to.slice(0,5)}...{tra.to.slice(tra.to.length-5, tra.to.length)}</span></td>
-        <td className="naji-width-150"><span>{tra.value}</span></td>
-        <td className="naji-width-150 "><span>{tra.createdAt}</span></td>
-    </tr>
-  ));
+  let transactions = '';
+
+  console.log(transaction);
+
+  if(Object.keys(transaction).length > 0){
+    transactions = transaction.map((tra) => (
+
+      <tr className="naji-TableBodyRow_row" key={tra.txid}>
+          <td className="naji-width-200"><Link to={`/transdetail/${tra.hash}`} className="naji_link"><span>{tra.hash.slice(0,5)}...{tra.hash.slice(tra.hash.length-5, tra.hash.length)}</span></Link></td>
+          <td className="naji-width-150"><span>{tra.from.slice(0,5)}...{tra.from.slice(tra.from.length-5, tra.from.length)}</span></td>
+          <td className="naji-width-150"><span>{tra.to.slice(0,5)}...{tra.to.slice(tra.to.length-5, tra.to.length)}</span></td>
+          <td className="naji-width-150"><span>{tra.value/1000000000000000000}</span></td>
+          <td className="naji-width-150 "><span>{tra.createdAt}</span></td>
+      </tr>
+    ));
+  } 
 
   return (
     <Fragment>
@@ -25,7 +32,7 @@ const transactions = transaction.map((tra) => (
                         <div className="naji-DividerWithTitle_line">
     
                         </div>
-                        <span className="naji-DividerWithTitle_title">Latest Transactions</span>
+                        <span className="naji-DividerWithTitle_title">Transactions</span>
                     </div>
                 </div>                
                 <div className="naji-Table">

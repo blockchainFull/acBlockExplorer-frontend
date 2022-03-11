@@ -14,20 +14,29 @@ const Block = ({ block }) => {
      copy(hash);
      toast("Copid!");
    };
+   console.log(block);
 
-  const blocks = block.map((blo) => (
-    <div className="naji-TableBodyRow_row" key={blo.height}>
-        <div className="naji-width-100"><Link to={`/blockDetail/${blo.number}`} className="naji_link"><span>{blo.number}</span></Link></div>
-        <div className="naji-width-200">
-            <div className="naji-LocalizedLink_link" onClick={e => copyHashToClipboard(blo.hash)}>{blo.hash.slice(1, 5)}...{blo.hash.slice(blo.hash.length - 5, blo.hash.length)}</div>
-        </div>
-        <div className="naji-width-100 "><span>{blo.difficulty}</span></div>
-        <div className="naji-width-100"><span>{blo.size}</span></div>
-        <div className="naji-width-100"><span>{blo.timestamp}</span></div>
-        <div className="naji-width-200"><span>{blo.miner.slice(1, 5)}...{blo.miner.slice(blo.miner.length - 5, blo.miner.length)}</span></div>
+   let blocks = '';
+   let blocks_temp = [];
 
-    </div>
-  ));
+   console.log(Object.keys(block).length);
+
+  if(Object.keys(block).length > 0 && Object.keys(block[0]).length > 0){
+    blocks = block.map((blo) => (
+      <div className="naji-TableBodyRow_row" key={blo.height}>
+          <div className="naji-width-100"><Link to={`/blockDetail/${blo.number}`} className="naji_link"><span>{blo.number}</span></Link></div>
+          <div className="naji-width-200">
+              <div className="naji-LocalizedLink_link" onClick={e => copyHashToClipboard(blo.hash)}>{blo.hash.slice(1, 5)}...{blo.hash.slice(blo.hash.length - 5, blo.hash.length)}</div>
+          </div>
+          <div className="naji-width-100 "><span>{blo.difficulty}</span></div>
+          <div className="naji-width-100"><span>{blo.size}</span></div>
+          <div className="naji-width-100"><span>{blo.timestamp}</span></div>
+          <div className="naji-width-200"><span>{blo.miner.slice(1, 5)}...{blo.miner.slice(blo.miner.length - 5, blo.miner.length)}</span></div>
+  
+      </div>
+    ));
+  }
+  
 
   return (
     <Fragment>
@@ -39,7 +48,7 @@ const Block = ({ block }) => {
                         <div className="naji-DividerWithTitle_line">
     
                         </div>
-                        <span className="naji-DividerWithTitle_title">Latest Blocks</span>
+                        <span className="naji-DividerWithTitle_title">Blocks</span>
                     </div>
                 </div>
                 <div className="naji-Table">

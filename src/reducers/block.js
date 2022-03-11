@@ -1,7 +1,8 @@
 import {
   GET_LATEST_BLOCKS,
   BLOCK_ERROR,
-  GET_BLOCK_DETAIL
+  GET_BLOCK_DETAIL,
+  GET_SEARCH_RESULT
 } from '../actions/types';
 
 const initialState = {
@@ -9,7 +10,11 @@ const initialState = {
   block: null,
   blockdetail: {},
   loading: true,
-  error: {}
+  error: {},
+  searchResult: {
+    block_result: [],
+    transaction_result: []
+  }
 };
 
 function blockReducer(state = initialState, action) {
@@ -29,12 +34,18 @@ function blockReducer(state = initialState, action) {
         loading: false
       };
 
-      case GET_BLOCK_DETAIL:
-        return {
-          ...state,
-          blockdetail: payload,
-          loading: false
-        };
+    case GET_BLOCK_DETAIL:
+      return {
+        ...state,
+        blockdetail: payload,
+        loading: false
+      };
+    case GET_SEARCH_RESULT:
+      return {
+        ...state,
+        searchResult: payload,
+        loading: false
+      };
     
     default:
       return state;

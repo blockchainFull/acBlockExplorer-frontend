@@ -3,6 +3,7 @@ import {
   GET_LATEST_BLOCKS,
   BLOCK_ERROR,
   GET_BLOCK_DETAIL,
+  GET_SEARCH_RESULT,
 } from './types';
 
 /*
@@ -11,6 +12,22 @@ import {
  also axios stringifies and parses JSON for you, so no need for 
  JSON.stringify or JSON.parse
 */
+
+// Get Latest Blocks
+export const getSearchResult = (searchinfo) => async (dispatch) => {
+  try {
+    const res = await api.get(`/acchains/getSearchResult/${searchinfo}`);
+    dispatch({
+      type: GET_SEARCH_RESULT,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: BLOCK_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
 
 // Get Latest Blocks
 export const getLatestBlocks = () => async (dispatch) => {

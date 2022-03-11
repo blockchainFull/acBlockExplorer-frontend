@@ -188,6 +188,12 @@ body {
     width: 100%;
 }
 
+@media only screen and (max-width: 880px) {
+    .naji-Table {
+        overflow: scroll;
+    }
+}
+
 .naji-Table_tableContainer {
     border: 0;
     font-size: 100%;
