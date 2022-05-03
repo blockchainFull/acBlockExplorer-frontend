@@ -26,8 +26,8 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/blockdetail/:blocknumber" element={<Blockdetail />} />
-          <Route path="/transdetail/:transhash" element={<Transdetail />} />
+          <Route path="/block/:blocknumber" element={<Blockdetail />} />
+          <Route path="/tx/:transhash" element={<Transdetail />} />
         </Routes>
       </Router>
     </Provider>

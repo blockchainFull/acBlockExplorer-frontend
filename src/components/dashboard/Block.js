@@ -24,7 +24,7 @@ const Block = ({ block }) => {
   if(Object.keys(block).length > 0 && Object.keys(block[0]).length > 0){
     blocks = block.map((blo) => (
       <div className="naji-TableBodyRow_row" key={blo.height}>
-          <div className="naji-width-100"><Link to={`/blockDetail/${blo.number}`} className="naji_link"><span>{blo.number}</span></Link></div>
+          <div className="naji-width-100"><Link to={`/block/${blo.number}`} className="naji_link"><span>{blo.number}</span></Link></div>
           <div className="naji-width-200">
               <div className="naji-LocalizedLink_link" onClick={e => copyHashToClipboard(blo.hash)}>{blo.hash.slice(1, 5)}...{blo.hash.slice(blo.hash.length - 5, blo.hash.length)}</div>
           </div>

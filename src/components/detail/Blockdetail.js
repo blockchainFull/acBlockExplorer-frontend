@@ -28,7 +28,7 @@ const Blockdetail = ({ getBlockDetail, blockdetail }) => {
     let tran_hash;
     if(blockdetail.transactions && Object.keys(blockdetail.transactions).length > 0){
         tran_hash = blockdetail.transactions.map((item) => (
-            <Link to={`/transdetail/${item}`} className="naji_link"><span>{item}</span></Link>
+            <Link to={`/tx/${item}`} className="naji_link"><span>{item}</span></Link>
         ))
     } else{
         tran_hash = (<>No Transaction</>);

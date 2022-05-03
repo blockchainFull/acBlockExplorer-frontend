@@ -13,7 +13,7 @@ const Transaction = ({ transaction }) => {
     transactions = transaction.map((tra) => (
 
       <tr className="naji-TableBodyRow_row" key={tra.txid}>
-          <td className="naji-width-200"><Link to={`/transdetail/${tra.hash}`} className="naji_link"><span>{tra.hash.slice(0,5)}...{tra.hash.slice(tra.hash.length-5, tra.hash.length)}</span></Link></td>
+          <td className="naji-width-200"><Link to={`/tx/${tra.hash}`} className="naji_link"><span>{tra.hash.slice(0,5)}...{tra.hash.slice(tra.hash.length-5, tra.hash.length)}</span></Link></td>
           <td className="naji-width-150"><span>{tra.from.slice(0,5)}...{tra.from.slice(tra.from.length-5, tra.from.length)}</span></td>
           <td className="naji-width-150"><span>{tra.to.slice(0,5)}...{tra.to.slice(tra.to.length-5, tra.to.length)}</span></td>
           <td className="naji-width-150"><span>{tra.value/1000000000000000000}</span></td>
