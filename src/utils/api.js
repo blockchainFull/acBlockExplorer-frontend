@@ -3,7 +3,7 @@ import store from '../store';
 
 // Create an instance of axios
 const api = axios.create({
-  baseURL: 'http://78.46.193.216:5005/api',
+  baseURL: 'https://ancientscoin.com/block',
   headers: {
     'Content-Type': 'application/json'
   }
