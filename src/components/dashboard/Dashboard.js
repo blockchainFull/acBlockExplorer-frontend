@@ -8,13 +8,14 @@ import { getLatestTransactions } from '../../actions/transaction';
 import { history } from '../../store';
 import logo from '../../img/ancientcoin.png';
 import '../../style.css';
+import { Input } from 'antd';
+import { ethers } from 'ethers';
 
 const Dashboard = ({  
   getLatestBlocks,
   getLatestTransactions,
   block,
   transaction,
-  getSearchResult,
   searchResult
 }) => {
   useEffect(() => {
@@ -42,20 +43,25 @@ const Dashboard = ({
 //   }, 4000);
 
   const searchBlocksTransactions = () => {
-    const value = document.getElementById('searchInfo').value;
-    console.log(value);
+    let value = document.getElementById('searchInfo').value.trim().toLowerCase();
     if(value.length == 42 && value.slice(0,2) == "0x")
     {
+      value = ethers.utils.getAddress(value);
       history.push(`/address/${value}`);
       history.go(`/address/${value}`);
     }
-    else if(!value)
-    {
+    else if(value.length == 66 && value.slice(0,2) == "0x") {
+      history.push(`/tx/${value}`);
+      history.go(`/tx/${value}`);
+    }
+    else if(!value) {
       getLatestBlocks();
       getLatestTransactions();
     }
-    else
-      getSearchResult(value);
+    else {
+      history.push(`/block/${value}`);
+      history.go(`/block/${value}`);
+    }
   }
 
   return (
@@ -89,7 +95,9 @@ const Dashboard = ({
                 <div className="naji-Search_searchContent">
                     <div className="naji-Search_searchInput naji-SimpleFormField_root">
                         <div className="naji-SimpleFormField_inputWrapper">
-                            <input className="naji-SimpleInput_input" placeholder="Search blocks, addresses and transactions" id="searchInfo"/>
+                            <Input className="naji-SimpleInput_input" placeholder="Search blocks, addresses and transactions" id="searchInfo" onPressEnter={(event) => {
+                              searchBlocksTransactions()
+                            }}/>
                         </div>
                     </div>
                     <button className="naji-Search_searchButton naji-SimpleButton_root" onClick={() => searchBlocksTransactions()}>

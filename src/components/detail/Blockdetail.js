@@ -39,7 +39,7 @@ const Blockdetail = ({ getBlockDetail, blockdetail }) => {
             <section className="naji-container">
                 <header className="naji-header">
                     <div className="naji-header_logoContainer">
-                        <a className="" href="#">
+                        <a className="" href="/">
                             <img src={logo}  className="naji-header_logoImg" alt="logo" />
                         </a>
                     </div>

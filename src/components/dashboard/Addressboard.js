@@ -6,7 +6,6 @@ import { getRecentTransactions } from '../../actions/transaction';
 import logo from '../../img/ancientcoin.png';
 import '../../style.css';
 import Transaction from './Transaction';
-import { Input } from 'antd';
 import { ethers, BigNumber } from 'ethers';
 import axios from 'axios';
 
@@ -28,10 +27,10 @@ const Addressboard = ({
     provider.getBalance(address).then((val) => {
       setBalance(val)
       axios.get("https://ancientscoin.com/ancient/users/getAcprice").then((result) => {
-        setPrice(result.data.acPrice);
+        setPrice(result.data.acPrice)
         let bignum = BigNumber.from((result.data.acPrice * (10 ** 14)).toString()); 
         if(result.data.message == "Success")
-        setValue(val.div(10 ** 14).mul(bignum));
+          setValue(val.div(10 ** 14).mul(bignum));
       })
     });
   }, []);
@@ -40,8 +39,8 @@ const Addressboard = ({
     getRecentTransactions(address, page, offset);
     provider.getBalance(address).then((val) => {
       setBalance(val)
-      console.log(parseFloat(ethers.utils.formatEther(balance)).toFixed(4));
       axios.get("https://ancientscoin.com/ancient/users/getAcprice").then((result) => {
+        setPrice(result.data.acPrice)
         let bignum = BigNumber.from((result.data.acPrice * (10 ** 14)).toString()); 
         if(result.data.message == "Success")
           setValue(val.div(10 ** 14).mul(bignum));
@@ -77,18 +76,18 @@ const Addressboard = ({
           </div>
       </header>
       <div>
-          <div className="naji-header_titleContainer" style={{fontSize:'14px'}}>
+          <div className="naji-content_titleContainer">
             <div className="naji-LocalizedLink_link">
                 <b>Address: </b><span>{address}</span>
             </div>
           </div>
-          <div className="naji-header_titleContainer" style={{fontSize:'14px'}}>
+          <div className="naji-content_titleContainer">
               <span className="naji-LocalizedLink_link">
                   <b>Balance: </b><span>{parseFloat(ethers.utils.formatEther(balance)).toFixed(4)}</span>
               </span>
               <span className="naji-LocalizedLink_link">
                   <b>Value: </b><span>${parseFloat(ethers.utils.formatEther(value)).toFixed(4)}</span>
-                  <span style={{fontSize:'10px'}}> (@ ${price.toFixed(2)}/ancientcoin)</span>
+                  <span style={{fontSize:'11px'}}> (@ ${price.toFixed(2)}/ancientcoin)</span>
               </span>
           </div>
       </div>

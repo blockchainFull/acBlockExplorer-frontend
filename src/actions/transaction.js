@@ -32,7 +32,6 @@ export const getLatestTransactions = () => async (dispatch) => {
 export const getTransDetail = (transhash) => async (dispatch) => {
   try {
     const res = await api.get(`/acchains/getTrans/${transhash}`);
-    console.log(res);
     dispatch({
       type: GET_TRANS_DETAIL,
       payload: res.data
