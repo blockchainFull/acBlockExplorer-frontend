@@ -14,12 +14,10 @@ const Block = ({ block }) => {
      copy(hash);
      toast("Copid!");
    };
-   console.log(block);
 
    let blocks = '';
    let blocks_temp = [];
 
-   console.log(Object.keys(block).length);
 
   if(Object.keys(block).length > 0 && Object.keys(block[0]).length > 0){
     blocks = block.map((blo) => (
@@ -48,7 +46,7 @@ const Block = ({ block }) => {
                         <div className="naji-DividerWithTitle_line">
     
                         </div>
-                        <span className="naji-DividerWithTitle_title">Blocks</span>
+                        <span className="naji-DividerWithTitle_title">Latest Blocks</span>
                     </div>
                 </div>
                 <div className="naji-Table">
@@ -68,7 +66,6 @@ const Block = ({ block }) => {
                     </tbody>
                   </table>
                 </div>
-
             </div>
         </div>
         {/* <div className="naji-ShowMoreButtonDecorator_root">

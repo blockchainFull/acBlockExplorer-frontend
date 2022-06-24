@@ -5,6 +5,7 @@ import Block from './Block';
 import Transaction from './Transaction';
 import { getLatestBlocks, getSearchResult } from '../../actions/block';
 import { getLatestTransactions } from '../../actions/transaction';
+import { history } from '../../store';
 import logo from '../../img/ancientcoin.png';
 import '../../style.css';
 
@@ -41,14 +42,20 @@ const Dashboard = ({
 //   }, 4000);
 
   const searchBlocksTransactions = () => {
-    console.log(document.getElementById('searchInfo').value);
-    if(!document.getElementById('searchInfo').value)
+    const value = document.getElementById('searchInfo').value;
+    console.log(value);
+    if(value.length == 42 && value.slice(0,2) == "0x")
+    {
+      history.push(`/address/${value}`);
+      history.go(`/address/${value}`);
+    }
+    else if(!value)
     {
       getLatestBlocks();
       getLatestTransactions();
     }
     else
-      getSearchResult(document.getElementById('searchInfo').value);
+      getSearchResult(value);
   }
 
   return (

@@ -61,11 +61,11 @@ const Transdetail = ({ getTransDetail, transdetail }) => {
                 </div>
                 <div className="naji_block_panel">
                     <span className="naji_block_panel_num1">From</span>
-                    <span className="naji_block_panel_num2">{ transdetail.from }</span>    
+                    <a className="naji_block_panel_num2" href={`http://localhost:3000/address/${transdetail.from}`}><span className="naji_link">{ transdetail.from }</span></a>    
                 </div>
                 <div className="naji_block_panel">
                     <span className="naji_block_panel_num1">To</span>
-                    <span className="naji_block_panel_num2">{ transdetail.to }</span>    
+                    <a className="naji_block_panel_num2" href={`http://localhost:3000/address/${transdetail.to}`}><span className="naji_link">{ transdetail.to }</span></a>    
                 </div>
                 <div className="naji_block_panel">
                     <span className="naji_block_panel_num1">Value</span>

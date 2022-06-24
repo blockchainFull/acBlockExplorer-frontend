@@ -24,7 +24,7 @@ export const getSearchResult = (searchinfo) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: BLOCK_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response }
     });
   }
 };
@@ -40,7 +40,7 @@ export const getLatestBlocks = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: BLOCK_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response }
     });
   }
 };
@@ -55,7 +55,7 @@ export const getBlockDetail = (blocknumber) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: BLOCK_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response }
     });
   }
 };

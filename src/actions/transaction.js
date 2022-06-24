@@ -1,6 +1,7 @@
 import api from '../utils/api';
 import {
   GET_LATEST_TRANSACTIONS,
+  GET_RECENT_TRANSACTIONS,
   TRANSACTION_ERROR,
   GET_TRANS_DETAIL,
 } from './types';
@@ -23,7 +24,7 @@ export const getLatestTransactions = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: TRANSACTION_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response }
     });
   }
 };
@@ -39,8 +40,23 @@ export const getTransDetail = (transhash) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: TRANSACTION_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: { msg: err.response }
     });
   }
 };
 
+
+export const getRecentTransactions = (address, page, offset) => async (dispatch) => {
+  try {
+    const res = await api.get(`/acchains/getRecentTransactions/${address}/${page}/${offset}`);
+    dispatch({
+      type: GET_RECENT_TRANSACTIONS,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: TRANSACTION_ERROR,
+      payload: { msg: err.response }
+    });
+  }
+};

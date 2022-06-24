@@ -1,5 +1,6 @@
 import {
   GET_LATEST_TRANSACTIONS,
+  GET_RECENT_TRANSACTIONS,
   TRANSACTION_ERROR,
   GET_TRANS_DETAIL
 } from '../actions/types';
@@ -17,6 +18,12 @@ function transactionReducer(state = initialState, action) {
 
   switch (type) {
     case GET_LATEST_TRANSACTIONS:
+      return {
+        ...state,
+        transactions: payload,
+        loading: false
+      };
+    case GET_RECENT_TRANSACTIONS:
       return {
         ...state,
         transactions: payload,

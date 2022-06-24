@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^4.21.3",
     "axios": "^0.24.0",
     "copy-text-to-clipboard": "^3.0.1",
+    "ethers": "^5.6.9",
     "export": "^0.1.337",
     "react": "^17.0.2",
     "react-alert": "^7.0.3",

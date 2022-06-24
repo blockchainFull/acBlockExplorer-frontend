@@ -1,8 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import { createBrowserHistory } from 'history';
 import rootReducer from './reducers';
 import setAuthToken from './utils/setAuthToken';
+
+export const history = createBrowserHistory();
 
 const initialState = {};
 
