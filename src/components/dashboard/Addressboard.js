@@ -46,7 +46,22 @@ const Addressboard = ({
           setValue(val.div(10 ** 14).mul(bignum));
       })
     });
-  }, [getRecentTransactions, address, page, offset])
+  }, [getRecentTransactions, page, offset])
+
+  useEffect(() => {
+    setPage(1);
+    setOffset(25);
+    getRecentTransactions(address, page, offset);
+    provider.getBalance(address).then((val) => {
+      setBalance(val)
+      axios.get("https://ancientscoin.com/ancient/users/getAcprice").then((result) => {
+        setPrice(result.data.acPrice)
+        let bignum = BigNumber.from((result.data.acPrice * (10 ** 14)).toString()); 
+        if(result.data.message == "Success")
+          setValue(val.div(10 ** 14).mul(bignum));
+      })
+    });
+  }, [address])
 
   useEffect(() => {
     SetTransactionsData(transaction.transactions);
